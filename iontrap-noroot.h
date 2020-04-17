@@ -67,17 +67,18 @@ class ionTrap {
 
     // Randomly generating the sign of the Brownian force term
     double kick_sign(){
-      int random = rand() % 100 + 1;
-      if(random % 2 == 0){
-	return sqrt(kickvar);
+	static double sqrv = sqrt(kickvar);
+//      int random = rand() % 100 + 1;
+      if(rand() % 2 == 0){
+	return sqrv;
       }
       else{
-	return -sqrt(kickvar);
+	return -sqrv;
       }
     }
 
     // Calculating the force vector the particle is under
-    vector F(const vector r, const vector v, const double t){
+    vector F(vector r, vector v, double t){
       //Gravity force
       //The eletric term
       static double Vacnow = Vac * cos (w_real * t);
@@ -90,9 +91,6 @@ class ionTrap {
       static vector Fb = vector((kick_sign() * kickvar), (kick_sign() * kickvar), (kick_sign() * kickvar));
       costhetacount++;
       costhetasum += (Fe+Fd+Fb) * v / (mag(v) * mag(Fe+Fd+Fb));
-	
-
-
 //      printf("\n\ntime %e\nposition:\t %e %e %e\nvelocity:\t %e %e %e\n",t,r.x,r.y,r.z,v.x,v.y,v.z);
 //      printf("Fe       :\t%e %e %e\n",Fe.x,Fe.y,Fe.z);
 //      printf("Fb       :\t%e %e %e\n",Fb.x,Fb.y,Fb.z);
