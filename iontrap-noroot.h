@@ -134,7 +134,7 @@ class ionTrap {
 	  }
 	  if (t > 1e4/w_real)
 	  {
-	  	printf("Runtime = %f sec; completed %d steps, rate %f steps per second; particle at radius %e; radratio %e\n",checktimer(1),steps,steps/checktimer(1),mag(r),mag(r) / (t * mag(Fext)/drag));
+	  	printf("Runtime = %f sec; completed %d steps, rate %.2e steps per second; particle at radius %e; radratio %e\n",checktimer(1),steps,steps/checktimer(1),mag(r),mag(r) / (t * mag(Fext)/drag));
 		printf("declared stable after t = %e\n",t);
 	        stability=1;
 		break;
