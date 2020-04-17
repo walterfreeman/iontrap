@@ -35,7 +35,7 @@ int main(int argc, char *argv[]){
   #pragma omp parallel 
   for (double az=azmin; az<azmax; az+=azstep)
   {
-	  fprintf(stderr,"%f percent done.\n",(az-azmin)/(azmax-azmin)*100);
+	  fprintf(stderr,"%f percent done with frequency %.3f GHz\n",(az-azmin)/(azmax-azmin)*100,w);
     for (double qz=qzmin; qz<qzmax; qz+=qzstep)
     {
       double Vdc = -az*m*z0*z0*w*w*1e18/(16*q);

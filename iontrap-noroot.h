@@ -81,12 +81,12 @@ class ionTrap {
     vector F(vector r, vector v, double t){
       //Gravity force
       //The eletric term
-      static double Vacnow = Vac * cos (w_real * t);
-      static vector Fe = q * vector((Vdc - Vacnow) / (z0*z0) * ( 2 * r.x),
+      double Vacnow = Vac * cos (w_real * t);
+      vector Fe = q * vector((Vdc - Vacnow) / (z0*z0) * ( 2 * r.x),
 	                            (Vdc - Vacnow) / (z0*z0) * ( 2 * r.y),
 	                            (Vdc - Vacnow) / (z0*z0) * (-1 * r.z));
       //The drag term
-      static vector Fd = -1 * v * drag;
+      vector Fd = -1 * v * drag;
       //The Brownian term
       static vector Fb = vector((kick_sign() * kickvar), (kick_sign() * kickvar), (kick_sign() * kickvar));
       costhetacount++;
@@ -160,9 +160,10 @@ class ionTrap {
 		  break;
 	  }
 	}
-	for (int i=0; i<1e5; i++)
+	for (int i=0; i<1e3; i++)
 	{
 	  ExecuteLeapFrog();
+	  if (mag(r) > z0) break;
 	  steps++;
 	}
 
