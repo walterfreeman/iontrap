@@ -164,7 +164,7 @@ class ionTrap {
 	  steps++;
 	}
 
-	if (checktimer(0) > 0.1)
+	if (checktimer(0) > 1)
 	{
 	  printf("Runtime = %f sec; copmleted %d steps, rate %.2e steps per second; particle at radius %e; radratio %e\n",checktimer(1),steps,steps/checktimer(1),mag(r), mag(r) / (t * mag(Fext)/drag));
 	  starttimer(0);
